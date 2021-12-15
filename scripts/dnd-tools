@@ -10,6 +10,7 @@ import sys
 import math
 import random
 import itertools
+import os
 
 try:
     # Use the system PRNG if possible
@@ -773,6 +774,7 @@ def start_fn():
     print("        0) (Q)uit                           ")
     print("")
     option = input("What would you like to do? ")
+    os.system('cls')
     if option in ("C", "c", "1"):
         global char_name
         global plyr_name
@@ -3235,7 +3237,7 @@ def modifiers_fn():
     print("The proficiency bonus for Lvl 1 characters is 2")
     print("Your class is: ", char_class)
     print("Calculating attack bonus...")
-    if char_class is "Barbarian":
+    if char_class == "Barbarian":
         prim_stat = "Strength"
     elif char_class in ("Bard", "Sorcerer", "Warlock"):
         prim_stat = "Charisma"
@@ -3756,7 +3758,7 @@ def skills_fn():
             if x or y == "Arcana":
                 skill_arcana = mod_int + 2
             if x or y == "Deception":
-                slkill_deception = mod_cha + 2
+                skill_deception = mod_cha + 2
             if x or y == "Insight":
                 skill_insight = mod_wis + 2
             if x or y == "Intimidation":
@@ -3823,7 +3825,7 @@ def skills_fn():
 def hp_fn():
     global char_hp
     print("Now we need to calculate hit points.")
-    if char_class is "Barbarian":
+    if char_class == "Barbarian":
         hit_die = random.randint(1, 12)
         char_hp = mod_con + hit_die
         print("You scored ", char_hp, " hit points")
